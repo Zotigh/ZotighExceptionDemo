@@ -21,11 +21,32 @@ namespace ZotighExceptionDemo
 
                     Console.WriteLine("Num1/Num2: {0}", num1 / num2);
                 }
-                catch
+                //catch
+                //{
+                //    Console.WriteLine("There was an error!");
+                //}
+                //Changed to be more discriptive
+                catch (System.FormatException exc)
                 {
-                    Console.WriteLine("There was an error!");
+                    Console.WriteLine("Not a number!");
                 }
-                Console.Write("Do another (y/n): ");
+
+                catch (System.OverflowException exc)
+                {
+                    Console.WriteLine("Number is too large or small!");
+                }
+
+                catch (Exception exc)
+                {
+                    Console.WriteLine("Error! " + exc.Message + "\nException type: " + exc.GetType());
+                }
+
+                finally
+                {
+                    Console.WriteLine("This section always excecutes!");
+                }
+
+                Console.WriteLine("Do another (y/n): ");
                 doAnother = Console.ReadLine();
 
             } while (doAnother == "y");
